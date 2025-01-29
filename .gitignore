@@ -1,2 +1,5 @@
-node_modules/
+# Ignore virtual environments
+venv/
 .env
+node_modules/
+
