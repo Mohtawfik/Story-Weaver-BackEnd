@@ -194,7 +194,7 @@ app.put("/stories/:id", async (req, res) => {
 app.delete("/stories/:storyId", async (req, res) => {
     try {
         const { storyId } = req.params;
-        const deletedStory = await Story.findByIdAndDelete(storyId);
+        const deletedStory = await Story.findOneAndDelete({ story_id: storyId }); // ✅ Use `story_id` instead of `_id`
 
         if (!deletedStory) {
             return res.status(404).json({ message: "Story not found" });
@@ -206,6 +206,7 @@ app.delete("/stories/:storyId", async (req, res) => {
         res.status(500).json({ message: "Server error while deleting story." });
     }
 });
+
 
 
 
